@@ -1,0 +1,29 @@
+<apex:page standardController="qEmployee__c" extensions="qEmployeeDetailExtension"  showHeader="false" sidebar="false" standardStylesheets="false" docType="xhtml-1.0-transitional" >
+<head>
+    <apex:stylesheet value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'jquery.mobile-1.3.0.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'jquery-1.9.1.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.MobileSample_Resources_jQueryMobile, 'jquery.mobile-1.3.0.min.js')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+<div data-role="page" data-theme="b">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="apex/qmEmployeeList" id="back2EmployeeList" class='ui-btn-left' data-icon='arrow-l' data-direction="reverse" data-transition="flip">Back</a>
+        <h1>Quarkd Employee Info</h1>
+    </div>
+     <div data-role="content" align="center"> 
+          <!--apex:outputField value="{!theEmployee.Avatar__c}"/-->
+          <img src = "/developers/resource/Avatars/avatars/{!theEmployee.Avatar_Name__c}" />
+          <h3 id="Name">{!theEmployee.First_Name__c + ' ' + theEmployee.Last_Name__c}</h3>
+          <a href="tel:{!SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(theEmployee.Phone__c, "-", ""), "(", ""), ")", ""), " ", "")}" id="Phone" data-role="button" data-icon="phone">{!theEmployee.Phone__c}</a>
+          <a href="mailto:{!theEmployee.email__c}" id="Email"  data-role="button" data-icon="email">{!theEmployee.Email__c}</a>
+     </div>
+
+     <div data-role="footer" >
+        Quarkd.
+    </div>
+
+</div>
+</body>
+</apex:page>
